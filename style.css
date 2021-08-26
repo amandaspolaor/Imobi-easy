@@ -7,20 +7,23 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+.oi{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     min-height: 100vh;
-    background: #232c33;
+    background: rgb(41, 41, 41);
+    position: fixed;
+    left: 0px;
+    z-index: 99;
 }
 .navigation{
     position: relative;
     height: 500px;
     width: 70px;
-    background: #2b342b;
+    background: rgb(41, 41, 41);
     box-shadow: 10px 0 0 rgb(228, 142, 72);
-    border-left: 10px solid #2b342b;
+    border-left: 10px solid rgb(41, 41, 41);
     overflow-x: hidden;
     transition: width 0.5s;
 
@@ -67,7 +70,7 @@ body{
     right: 0;
     width: 30px;
     height: 30px;
-    background: #2b342b;
+    background: rgb(41, 41, 41);
     border-radius: 50%;
     box-shadow: 15px 15px 0 rgb(228, 142, 72);
 }
@@ -78,7 +81,7 @@ body{
     right: 0;
     width: 30px;
     height: 30px;
-    background: #2b342b;
+    background: rgb(41, 41, 41);
     border-radius: 50%;
     box-shadow: 15px -15px 0 rgb(228, 142, 72);
 }
@@ -106,3 +109,4 @@ body{
     line-height: 60px;
     white-space: nowrap;
 }
+
