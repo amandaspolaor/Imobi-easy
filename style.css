@@ -19,7 +19,7 @@ body{
     height: 500px;
     width: 70px;
     background: #2b342b;
-    box-shadow: 10px 0 0 #4187f6;
+    box-shadow: 10px 0 0 rgb(228, 142, 72);
     border-left: 10px solid #2b342b;
     overflow-x: hidden;
     transition: width 0.5s;
@@ -47,7 +47,7 @@ body{
 }
 
 .navigation ul li.active{
-    background: #4187f6;
+    background: rgb(228, 142, 72);
 }
 
 
@@ -69,7 +69,7 @@ body{
     height: 30px;
     background: #2b342b;
     border-radius: 50%;
-    box-shadow: 15px 15px 0 #4187f6;
+    box-shadow: 15px 15px 0 rgb(228, 142, 72);
 }
 .navigation ul li.active a::after{
     content: '';
@@ -80,7 +80,7 @@ body{
     height: 30px;
     background: #2b342b;
     border-radius: 50%;
-    box-shadow: 15px -15px 0 #4187f6;
+    box-shadow: 15px -15px 0 rgb(228, 142, 72);
 }
 
 .navigation ul li a .icon{
