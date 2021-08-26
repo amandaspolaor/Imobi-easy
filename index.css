@@ -1,0 +1,400 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.home,
+.about,
+.search,
+.service,
+.contact
+{
+    /* display: none; */
+}
+
+
+*.row.section {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.section {
+    background-color: rgb(41, 41, 41);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title {
+    position: absolute;
+    color: rgb(228, 142, 72);
+    border-bottom: 1px solid rgb(228, 142, 72);
+    width: auto;
+    left: 5%;
+    top: 5%;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+/* Home */
+
+.home {
+    background-color: white;
+    
+}
+
+.image-home {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+}
+
+.image-home img {
+    height: 100%;
+    z-index: -1;
+}
+
+.title-home {
+    position: absolute;
+    z-index: 999;
+    height: 100%;
+    background-color: rgb(41, 41, 41);
+    top: 0;
+    left: 50%;
+    width: 90%;
+    transform: skew(-15deg, 0deg);
+}
+
+.title-home h1 {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    border: 2px solid black;
+    transform: translate(0%, -50%);
+    padding: 10px;
+    box-shadow: 10px 10px 0px rgb(134, 134, 134), 20px 20px 0px rgba(238, 238, 238, 0.801), 20px 20px 10px rgb(243, 243, 243);
+    color: rgb(228, 142, 72);
+    text-shadow: 0px 0px 10px rgba(228, 142, 72, 0.651);
+}
+
+/* Home-end */
+
+/* About */
+
+.about-text {
+    color: gainsboro;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    font-size: 1.4rem;
+    line-height: 30px;
+}
+
+/* About-end */
+
+/* Search */
+
+.search {
+    min-height: 150vh;
+    /* display: none; */
+}
+
+.search-bar {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: rgb(24, 24, 24);
+    width: 60vw;
+    height: 5vh;
+}
+
+.search-bar .col.s3 {
+    position: relative;
+    height: 5vh;
+}
+
+.search-bar .col.s3 button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search-bar .col.s3 button.button {
+    border: none;
+    width: 50%;
+    text-align: center;
+    border: 1px solid rgb(228, 142, 72);
+    color: rgb(228, 142, 72);
+    height: 3vh;
+    text-transform: uppercase;
+    background-color: transparent;
+}
+
+.search-bar .col.s3 input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 3vh;
+    width: 80%;
+    color: rgb(172, 172, 172);
+    padding: 0;
+    margin: 0;
+}
+
+.search-bar .col.s3 label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 3vh;
+    width: 80%;
+    padding: 5px;
+    margin: 0;
+    color: rgb(172, 172, 172);
+    text-transform: uppercase;
+}
+
+.top-trends {
+    position: absolute;
+    width: 60vw;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.top-trends .col.s4 {
+    height: 40vh;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* Card */
+
+.card {
+    height: 95%;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(238, 238, 238);
+    margin-top: 20px;
+    overflow: hidden;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+}
+
+.card-top {
+    position: absolute;
+    top: 10%;
+    height: 10%;
+    width: 70%;
+    left: -5%;
+    padding-top: 10px;
+    transform: skew(-15deg, 0deg);
+    background-color: rgba(43, 42, 42, 0.719);
+}
+
+.card-title {
+    text-transform: uppercase;
+    color: rgb(228, 142, 72);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-left: 10%;
+}
+
+.card-title h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.card-middle {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 60%;
+    width: 100%;
+    background-color: rgb(41, 41, 41);
+    z-index: -1;
+}
+
+.card-middle img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    z-index: 9;
+}
+
+.card-bottom {
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 99;
+    background-color: rgb(228, 142, 72);
+    overflow: hidden;
+}
+
+.second-info, .first-info, .third-info {
+    position: absolute;
+    top: 10%;
+    width: 90%;
+    /* border: 1px solid rgb(41, 41, 41); */
+    height: 20%;
+}
+
+.second-info {
+    width: 90%;
+    top: 40%;
+}
+
+.third-info {
+    width: 90%;
+    top: 70%;
+}
+
+.price, .type, .location {
+    text-align: left;
+}
+
+.info .icon {
+    text-align: center;
+}
+
+.bottom-more {
+    position: absolute;
+    background-color: rgb(22, 22, 22);
+    height: 50%;
+    width: 50%;
+    top: 75%;
+    left: 75%;
+    transform: translate(-50%, -0%);
+    transform: rotate(45deg);
+    z-index: 9999;
+}
+
+.bottom-more i {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    transform: translate(-50%,-50%);
+    color: rgb(228, 142, 72);
+    font-size: 1.8rem;
+    transform: rotate(45deg);
+}
+
+/* Card-end */
+
+/* Search-end */
+
+/* Serice */
+
+.service-modality {
+    height: 70%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+}
+
+.service-modality .s6 {
+    min-height: 70vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-rent {
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    border-top: 35vh solid transparent;
+    border-bottom: 35vh solid transparent;
+    border-left: 40vw solid rgba(230, 230, 230, 0.719);
+}
+
+.service-sell {
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    border-top: 35vh solid transparent;
+    border-bottom: 35vh solid transparent;
+    border-right: 40vw solid rgba(230, 230, 230, 0.719);
+}
+
+.service-rent-description,.service-sell-description{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+}
+
+.service-sell-description {
+    left: 60%;
+}
+
+.service-rent-description h4,.service-sell-description h4{
+    font-size: 2.3rem;
+    color: rgb(73, 73, 73)
+}
+
+.service-rent-description a,.service-sell-description a{
+    font-size: 1.4rem;
+    color: rgb(228, 142, 72);
+    margin-left: 15%;
+}
+
+/* Service-end */
+
+/* contact */
+
+#map {
+    height: 50vh;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+#map-legend {
+    color: rgb(228, 142, 72);
+    text-transform: uppercase;
+    margin-top: 5px;
+    text-align: right;
+    width: 100%;
+}
+
+.contact-row {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80vw;
+}
+  #txtBusca{
+
+    background-color:white;
+    padding-left:5px;
+    font-style:italic;
+    font-size:18px;
+    border: 1px;;
+    height:30px;
+    width:260px;
+
+  }
