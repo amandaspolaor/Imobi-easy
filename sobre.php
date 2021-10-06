@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper" style="background-color: #e48e48; border-bottom: 7px solid rgb(41, 41, 41);">
-            <a href="index.html" class="brand-logo center">IMOBI FÁCIL</a>
+            <a href="index.php" class="brand-logo center">IMOBI FÁCIL</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="login.html" style="font-size: 20px;">Sign in</a></li>
-                <li><a href="contato.html" style="font-size: 20px;">Contato</a></li>
+                <li><a href="login.php" style="font-size: 20px;">Sign in</a></li>
+                <li><a href="contato.php" style="font-size: 20px;">Contato</a></li>
             </ul>
         </div>
     </nav>

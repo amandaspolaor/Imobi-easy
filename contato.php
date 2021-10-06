@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper" style="background-color: #e48e48; border-bottom: 7px solid rgb(41, 41, 41);">
-            <a href="index.html" class="brand-logo center">IMOBI FÁCIL</a>
+            <a href="index.php" class="brand-logo center">IMOBI FÁCIL</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="login.html" style="font-size: 20px;">Sign in</a></li>
-                <li><a href="sobre.html" style="font-size: 20px;">Sobre</a></li>
+                <li><a href="login.php" style="font-size: 20px;">Sign in</a></li>
+                <li><a href="sobre.php" style="font-size: 20px;">Sobre</a></li>
             </ul>
         </div>
     </nav>
@@ -59,23 +59,24 @@
                     <div id="map"></div>
                     <legend id="map-legend">Alegrete RS</legend>
                     <script>
-                        function initMap() {
-                            var e = {
+                    function initMap() {
+                        var e = {
                                 lat: -29.751951,
                                 lng: -57.088173
                             },
-                                n = new google.maps.Map(document.getElementById("map"), {
-                                    zoom: 18,
-                                    center: e
-                                });
-                            new google.maps.Marker({
-                                position: e,
-                                map: n
-                            })
-                        }
+                            n = new google.maps.Map(document.getElementById("map"), {
+                                zoom: 18,
+                                center: e
+                            });
+                        new google.maps.Marker({
+                            position: e,
+                            map: n
+                        })
+                    }
                     </script>
                     <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQuQMkdXNDpiVVdVVumYQ16Xrh2vr3u0o&callback=initMap"></script>
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQuQMkdXNDpiVVdVVumYQ16Xrh2vr3u0o&callback=initMap">
+                    </script>
 
                 </div>
 

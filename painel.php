@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "verifica_login.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 
@@ -21,7 +26,7 @@
         <div class="navigation">
             <ul>
                 <li class="list active">
-                    <a href="index.html">
+                    <a href="index.php">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -29,7 +34,7 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="contato.html">
+                    <a href="contato.php">
                         <span class="icon">
                             <ion-icon name="chatbox-ellipses-outline"></ion-icon>
                         </span>
@@ -37,7 +42,7 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="sobre.html">
+                    <a href="sobre.php">
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
                         </span>
@@ -45,11 +50,19 @@
                     </a>
                 </li>
                 <li class="list">
-                    <a href="login.html">
+                    <a href="perfil.php?id=1">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="title">Meu Perfil</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="logout.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
-                        <span class="title">Sign in</span>
+                        <span class="title">Sign Out</span>
                     </a>
                 </li>
             </ul>
@@ -61,6 +74,7 @@
         </div>
         <div class="title-home">
             <h1>
+
                 IMOBI FACIL
             </h1>
         </div>
@@ -425,9 +439,6 @@
 
             </div>
         </div>
-
-
-
     </div>
 
     </div>
@@ -448,7 +459,7 @@
                     </div>
                     <div class="service-sell-description">
                         <h4>Vender imovel</h4>
-                        <a href="#">Anunciar venda</a>
+                        <a href="cadastro_imovel.php">Anunciar venda</a>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,6 @@
+<?php
+include "conexao.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,48 +17,50 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <link rel="stylesheet" href="login.css">
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/index.js"></script>
     <title>Login</title>
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper" style="background-color: #e48e48; border-bottom: 7px solid rgb(41, 41, 41);">
-            <a href="index.html" class="brand-logo center">IMOBI FÁCIL</a>
+            <a href="index.php" class="brand-logo center">IMOBI FÁCIL</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="contato.html" style="font-size: 20px;">Contato</a></li>
-                <li><a href="sobre.html" style="font-size: 20px;">Sobre</a></li>
+                <li><a href="contato.php" style="font-size: 20px;">Contato</a></li>
+                <li><a href="sobre.php" style="font-size: 20px;">Sobre</a></li>
             </ul>
         </div>
     </nav>
     <h1 class="section-title">Login</h1>
     <div class="login-form">
         <div class="login-elements">
-            <form action="#">
+            <form action="loginusuario.php" method="POST">
                 <div class="input-field">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" id="name">
+                    <input type="text" autocomplete="off" name="email">
                     <label for="email">Email</label>
                 </div>
                 <br>
                 <div class="input-field">
                     <i class="material-icons prefix">lock</i>
-                    <input type="password" id="pass">
+                    <input type="password" autocomplete="off" name="senha">
                     <label for="pass">Password</label>
                 </div>
                 <br>
-                <a class="waves-effect waves-light btn accent-3"
-                    style="background-color: #e48e48; color: #000;">Enviar</a>
+                <input type="submit" name="acesso" Value="Acessar"
+                    style="color: black; background-color: rgb(228, 142, 72); width: 100%; height: 50px; border-radius: 5px;" />
             </form>
         </div>
     </div>
     <div class="cad-form">
         <h1 class="section-title2">Ainda não possui cadastro? Cadastre-se aqui!</h1>
         <div class="espaco">
-            <a href="cadastro.html" class="waves-effect waves-light btn grey darken-3">Cadastrar</a>
+            <a href="cadastro.php" class="waves-effect waves-light btn grey darken-3">Cadastrar</a>
         </div>
+
     </div>
+
 </body>
 
 </html>
