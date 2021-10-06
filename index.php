@@ -1,440 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+session_start();
+require_once("vendor/autoload.php");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+use \Slim\Slim;
+use unipampa\DB\Sql;
+use unipampa\Model\Imovel;
+use \unipampa\Page;
+use unipampa\PageAdmin;
+use unipampa\Model\User;
 
-    <!-- Compiled and minified CSS -->
+$app = new Slim();
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
-</head>
+$app->config('debug', true);
 
-<body>
-    <div class="oi">
-        <div class="navigation">
-            <ul>
-                <li class="list active">
-                    <a href="index.php">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <spam class="title">Home</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="contato.php">
-                        <span class="icon">
-                            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-                        </span>
-                        <span class="title">Contato</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="sobre.php">
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sobre</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="login.php">
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign in</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row section home">
-        <div class="image-home">
-            <img src="assets/predios.jpg" alt="">
-        </div>
-        <div class="title-home">
-            <h1>
-                IMOBI FACIL
-            </h1>
-        </div>
-    </div>
-    <div class="row section search">
-        <h1 class="section-title">BUSCAR</h1>
+$app->get('/', function() {
 
-        <div class="search-bar">
-            <div class="row">
-                <div class="col s3">
-                    <button class="button">button</button>
-                </div>
-                <div class="col s3">
-                    <input id="val1" type="text">
-                    <label for="val1">Valor</label>
-                </div>
-                <div class="col s3">
-                    <input id="val2" type="text">
-                    <label for="val2">Tipo</label>
-                </div>
-                <div class="col s3">
-                    <input id="val3" type="text">
-                    <label for="val3">Local</label>
+	$imoveis = Imovel::listAll();
 
-                </div>
-            </div>
-        </div>
+	$page = new Page();
+
+	$page->setTpl("index",array(
+		"imoveis"=>$imoveis
+	));
+    
+});
+
+$app->get('/admin', function() {
+
+	User::verifyLogin();
+    
+	$page = new PageAdmin();
+	
+	$page->setTpl("index");
+
+});
+
+$app->get('/admin/login', function() {
+    
+	$page = new PageAdmin([
+		"header" => false,
+		"footer" => false
+	]);
+
+	$sql = new Sql();
+	
+	$page->setTpl("login");
+
+});
 
 
-        <div class="top-trends">
-            <div class="row">
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-top">
-                            <div class="card-title">
-                                <h6>Sobrado bonito</h6>
-                            </div>
-                        </div>
-                        <div class="card-middle">
+$app->post('/admin/login', function(){
+	
+	User::login($_POST["login"], $_POST['password']);
 
-                            <img src="assets/fachadas-de-sobrados-60.jpg" alt="">
+	header("Location:/admin");
 
-                        </div>
-                        <div class="card-bottom">
-                            <div class="info first-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-map-marker-alt"></i>
+	exit;
 
-                                    </div>
-                                    <div class="col s9 location">
-                                        Alegrete RS
-                                    </div>
-
-                                </div>
-                            </div>
+});
 
 
-                            <div class="info second-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="far fa-building"></i>
-                                    </div>
-                                    <div class="col s9 type">
-                                        Apartamento
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="info third-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="col s9 price">
-                                        12000,00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+$app->get('/admin/logout', function(){
+	
+	User::logout();
 
-                        <div class="bottom-more">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-top">
-                            <div class="card-title">
-                                <h6>Sobrado bonito</h6>
-                            </div>
-                        </div>
-                        <div class="card-middle">
+	header("Location:/admin/login");
 
-                            <img src="assets/fachadas-de-sobrados-60.jpg" alt="">
+	exit;
 
-                        </div>
-                        <div class="card-bottom">
-                            <div class="info first-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-map-marker-alt"></i>
+});
 
-                                    </div>
-                                    <div class="col s9 location">
-                                        Alegrete RS
-                                    </div>
+$app->get('/admin/users',function(){
 
-                                </div>
-                            </div>
+	User::verifyLogin();
+
+	$users = User::listAll();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("users",array(
+		"users"=>$users
+	));
+
+});
 
 
-                            <div class="info second-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="far fa-building"></i>
-                                    </div>
-                                    <div class="col s9 type">
-                                        Apartamento
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="info third-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="col s9 price">
-                                        12000,00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+$app->get('/admin/users/create',function(){
 
-                        <div class="bottom-more">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-top">
-                            <div class="card-title">
-                                <h6>Sobrado bonito</h6>
-                            </div>
-                        </div>
-                        <div class="card-middle">
+	User::verifyLogin();
 
-                            <img src="assets/fachadas-de-sobrados-60.jpg" alt="">
+	$page = new PageAdmin();
 
-                        </div>
-                        <div class="card-bottom">
-                            <div class="info first-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-map-marker-alt"></i>
+	$page->setTpl("users-create");
 
-                                    </div>
-                                    <div class="col s9 location">
-                                        Alegrete RS
-                                    </div>
+});
 
-                                </div>
-                            </div>
+$app->get("/admin/users/:id/delete", function($id){
+
+	User::verifyLogin();
+
+	$user = new User();
+
+	$user->get((int)$id);
+
+	$user->delete();
+
+	header("Location: /admin/users");
+	exit;
+
+});
 
 
-                            <div class="info second-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="far fa-building"></i>
-                                    </div>
-                                    <div class="col s9 type">
-                                        Apartamento
-                                    </div>
-                                </div>
-                            </div>
+$app->get('/admin/users/:id',function($id){
 
-                            <div class="info third-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="col s9 price">
-                                        12000,00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+	User::verifyLogin();
 
-                        <div class="bottom-more">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-top">
-                            <div class="card-title">
-                                <h6>Sobrado bonito</h6>
-                            </div>
-                        </div>
-                        <div class="card-middle">
+	$user = new User();
 
-                            <img src="assets/fachadas-de-sobrados-60.jpg" alt="">
+	$user->get((int)$id);
 
-                        </div>
-                        <div class="card-bottom">
-                            <div class="info first-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-map-marker-alt"></i>
+	$page = new PageAdmin();
+	
+	$page->setTpl("users-update",array(
+		"user"=>$user->getValues()
+	));
 
-                                    </div>
-                                    <div class="col s9 location">
-                                        Alegrete RS
-                                    </div>
-
-                                </div>
-                            </div>
+});
 
 
-                            <div class="info second-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="far fa-building"></i>
-                                    </div>
-                                    <div class="col s9 type">
-                                        Apartamento
-                                    </div>
-                                </div>
-                            </div>
+$app->post("/admin/users/create", function(){
 
-                            <div class="info third-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="col s9 price">
-                                        12000,00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+	User::verifyLogin();
 
-                        <div class="bottom-more">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-top">
-                            <div class="card-title">
-                                <h6>Sobrado bonito</h6>
-                            </div>
-                        </div>
-                        <div class="card-middle">
+	$user = new User();
 
-                            <img src="assets/fachadas-de-sobrados-60.jpg" alt="">
+	$user->setData($_POST);
 
-                        </div>
-                        <div class="card-bottom">
-                            <div class="info first-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-map-marker-alt"></i>
+	$user->save();
 
-                                    </div>
-                                    <div class="col s9 location">
-                                        Alegrete RS
-                                    </div>
+	header("Location: /admin/users");
+	exit;
 
-                                </div>
-                            </div>
+});
+
+$app->post("/admin/users/:id", function($id){
+
+	User::verifyLogin();
+
+	$user = new User();
+
+	$user->get((int)$id);
+
+	$user->setData($_POST);
+
+	$user->update();
+
+	header("Location: /admin/users");
+	exit;
+
+});
 
 
-                            <div class="info second-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="far fa-building"></i>
-                                    </div>
-                                    <div class="col s9 type">
-                                        Apartamento
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="info third-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="col s9 price">
-                                        12000,00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bottom-more">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s4">
-                    <div class="card">
-                        <div class="card-top">
-                            <div class="card-title">
-                                <h6>Sobrado bonito</h6>
-                            </div>
-                        </div>
-                        <div class="card-middle">
-
-                            <img src="assets/fachadas-de-sobrados-60.jpg" alt="">
-
-                        </div>
-                        <div class="card-bottom">
-                            <div class="info first-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-
-                                    </div>
-                                    <div class="col s9 location">
-                                        Alegrete RS
-                                    </div>
-
-                                </div>
-                            </div>
 
 
-                            <div class="info second-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="far fa-building"></i>
-                                    </div>
-                                    <div class="col s9 type">
-                                        Apartamento
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="info third-info">
-                                <div class="row">
-                                    <div class="col s3 icon">
-                                        <i class="fas fa-dollar-sign"></i>
-                                    </div>
-                                    <div class="col s9 price">
-                                        12000,00
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="bottom-more">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
 
-    </div>
-</body>
-<!-- Compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="index.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-</html>
+
+
+$app->get('/admin/imoveis',function(){
+
+	User::verifyLogin();
+
+	$imoveis = Imovel::listAll();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("imoveis",array(
+		"imoveis"=>$imoveis
+	));
+
+});
+
+$app->get('/admin/imoveis/create',function(){
+
+	User::verifyLogin();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("imoveis-create");
+
+});
+
+$app->get("/admin/imoveis/:id/delete", function($id){
+
+	$imovel = new Imovel();
+
+	$imovel->get((int)$id);
+
+	$imovel->delete();
+
+	User::verifyLogin();
+
+	header("Location: /admin/users");
+	exit;
+
+});
+
+$app->get('/admin/imoveis/:id',function($id){
+
+	User::verifyLogin();
+
+	$imovel = new Imovel();
+
+	$imovel->get((int)$id);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("imoveis-update",array(
+		"imovel"=>$imovel->getValues()
+	));
+});
+
+
+$app->post("/admin/imoveis/create", function(){
+
+	User::verifyLogin();
+
+	$imovel = new Imovel();
+
+	$imovel->setData($_POST);
+
+	$imovel->save();
+	header("Location: /admin/imoveis");
+	exit;
+
+});
+
+$app->post("/admin/imoveis/:id", function($id){
+
+	User::verifyLogin();
+
+	$imovel = new Imovel();
+
+	$imovel->get((int)$id);
+
+	$imovel->setData($_POST);
+
+	$imovel->update();
+	header("Location: /admin/imoveis");
+	exit;
+
+});
+
+
+
+
+
+
+$app->run();
+
+ ?>
